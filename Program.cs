@@ -9,7 +9,10 @@ class Program
         Console.Write("Enter your name: ");
         string userName = Console.ReadLine();
 
-        Console.WriteLine($"\nHello {userName}!");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"\nWelcome, {userName}!");
+        Console.ResetColor();
+
         Console.WriteLine("I am your Cybersecurity Awareness Bot.");
         Console.WriteLine("Ask me anything about staying safe online.");
         Console.WriteLine("Tip: Never share your passwords with anyone! 🔐");
@@ -31,7 +34,8 @@ class Program
          |___/                                     
 ");
 
-        Console.WriteLine("=== CYBERSECURITY AWARENESS CHATBOT ===\n");
+        Console.WriteLine("=== CYBERSECURITY AWARENESS CHATBOT ===");
+        Console.WriteLine("========================================\n");
 
         Console.ResetColor();
     }
@@ -41,7 +45,7 @@ class Program
         while (true)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("You: ");
+            Console.Write("\nYou: ");
             Console.ResetColor();
 
             string input = Console.ReadLine()?.ToLower();
@@ -57,7 +61,7 @@ class Program
             if (input == "exit")
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Bot: Goodbye! Stay safe online.");
+                Console.WriteLine("\nBot: Goodbye! Stay safe online.");
                 Console.ResetColor();
                 break;
             }
@@ -67,6 +71,8 @@ class Program
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bot: " + GetResponse(input));
             Console.ResetColor();
+
+            Console.WriteLine("-----------------------------------");
         }
     }
 
@@ -124,7 +130,7 @@ class Program
         if (input.Contains("identity") || input.Contains("theft"))
             return "Identity theft happens when someone steals your personal information. Keep your data secure.";
 
-        // NEW FEATURES (Commit 2)
+        // Extra Features
         if (input.Contains("hack") || input.Contains("hacker"))
             return "Hackers try to gain unauthorized access to systems. Always keep your software updated and secure.";
 
