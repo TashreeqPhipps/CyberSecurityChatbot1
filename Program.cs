@@ -12,6 +12,7 @@ class Program
         Console.WriteLine($"\nHello {userName}!");
         Console.WriteLine("I am your Cybersecurity Awareness Bot.");
         Console.WriteLine("Ask me anything about staying safe online.");
+        Console.WriteLine("Tip: Never share your passwords with anyone! 🔐"); // NEW LINE
         Console.WriteLine("Type 'exit' to quit.\n");
 
         RunChatbot(userName);
@@ -119,6 +120,10 @@ class Program
         // Identity theft
         if (input.Contains("identity") || input.Contains("theft"))
             return "Identity theft happens when someone steals your personal information. Keep your data secure.";
+
+        // NEW FEATURE
+        if (input.Contains("2fa") || input.Contains("two factor"))
+            return "Two-factor authentication adds an extra layer of security by requiring a second verification step.";
 
         return "I didn’t quite understand that. Try asking about cybersecurity topics like passwords or phishing.";
     }
