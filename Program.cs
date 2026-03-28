@@ -12,7 +12,7 @@ class Program
         Console.WriteLine($"\nHello {userName}!");
         Console.WriteLine("I am your Cybersecurity Awareness Bot.");
         Console.WriteLine("Ask me anything about staying safe online.");
-        Console.WriteLine("Tip: Never share your passwords with anyone! 🔐"); // NEW LINE
+        Console.WriteLine("Tip: Never share your passwords with anyone! 🔐");
         Console.WriteLine("Type 'exit' to quit.\n");
 
         RunChatbot(userName);
@@ -89,6 +89,9 @@ class Program
         if (input.Contains("password"))
             return "Use strong passwords with uppercase, lowercase, numbers, and symbols. Never reuse passwords.";
 
+        if (input.Contains("strong password"))
+            return "A strong password should be at least 12 characters long and include a mix of letters, numbers, and symbols.";
+
         // Phishing
         if (input.Contains("phishing") || input.Contains("phish") || input.Contains("scam"))
             return "Phishing is when scammers trick you with fake emails or links to steal your personal information.";
@@ -121,7 +124,16 @@ class Program
         if (input.Contains("identity") || input.Contains("theft"))
             return "Identity theft happens when someone steals your personal information. Keep your data secure.";
 
-        // NEW FEATURE
+        // NEW FEATURES (Commit 2)
+        if (input.Contains("hack") || input.Contains("hacker"))
+            return "Hackers try to gain unauthorized access to systems. Always keep your software updated and secure.";
+
+        if (input.Contains("update") || input.Contains("software"))
+            return "Always keep your apps and system updated to fix security vulnerabilities.";
+
+        if (input.Contains("link") || input.Contains("url"))
+            return "Always hover over links before clicking to check if they are legitimate.";
+
         if (input.Contains("2fa") || input.Contains("two factor"))
             return "Two-factor authentication adds an extra layer of security by requiring a second verification step.";
 
