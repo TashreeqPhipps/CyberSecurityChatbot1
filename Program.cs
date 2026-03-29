@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Media;
 
 class Program
 {
     static void Main(string[] args)
     {
+        PlayGreeting();// Audio
+
         ShowHeader();
 
         Console.Write("Enter your name: ");
-        string userName = Console.ReadLine();
+        string userName = Console.ReadLine() ?? "User";
 
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"\nWelcome, {userName}!");
@@ -38,6 +41,20 @@ class Program
         Console.WriteLine("========================================\n");
 
         Console.ResetColor();
+    }
+
+    // AUDIO METHOD 
+    static void PlayGreeting()
+    {
+        try
+        {
+            SoundPlayer player = new SoundPlayer("Greeting.wav");
+            player.PlaySync(); // plays audio
+        }
+        catch
+        {
+            Console.WriteLine("Audio file not found.");
+        }
     }
 
     static void RunChatbot(string userName)
@@ -78,7 +95,6 @@ class Program
 
     static string GetResponse(string input)
     {
-        // General
         if (input.Contains("how are you"))
             return "I'm just code, but I'm here to help you stay safe online!";
 
@@ -91,58 +107,48 @@ class Program
         if (input.Contains("help") || input.Contains("tips"))
             return "Tips: Use strong passwords, avoid suspicious links, never share OTPs, and browse securely.";
 
-        // Passwords
         if (input.Contains("password"))
             return "Use strong passwords with uppercase, lowercase, numbers, and symbols. Never reuse passwords.";
 
         if (input.Contains("strong password"))
             return "A strong password should be at least 12 characters long and include a mix of letters, numbers, and symbols.";
 
-        // Phishing
         if (input.Contains("phishing") || input.Contains("phish") || input.Contains("scam"))
             return "Phishing is when scammers trick you with fake emails or links to steal your personal information.";
 
-        // Safe browsing
         if (input.Contains("safe") || input.Contains("online") || input.Contains("browse"))
             return "Avoid suspicious links, always check URLs, and ensure websites use HTTPS.";
 
-        // Malware
         if (input.Contains("virus") || input.Contains("malware"))
             return "Malware is harmful software. Avoid downloading files from unknown sources.";
 
-        // Email safety
         if (input.Contains("email"))
-            return "Be cautious with emails from unknown senders. Avoid clicking suspicious links or attachments.";
+            return "Be cautious with emails from unknown senders.";
 
-        // Banking safety
         if (input.Contains("bank") || input.Contains("otp") || input.Contains("pin"))
-            return "Never share your OTP, PIN, or banking details. Banks will never ask for this information.";
+            return "Never share your OTP, PIN, or banking details.";
 
-        // Social media
-        if (input.Contains("social") || input.Contains("facebook") || input.Contains("instagram"))
-            return "Avoid sharing personal information on social media. Protect your privacy.";
+        if (input.Contains("social"))
+            return "Avoid sharing personal information on social media.";
 
-        // Public WiFi
         if (input.Contains("wifi"))
-            return "Public WiFi is risky. Avoid accessing sensitive accounts like banking on public networks.";
+            return "Public WiFi is risky. Avoid banking on it.";
 
-        // Identity theft
-        if (input.Contains("identity") || input.Contains("theft"))
-            return "Identity theft happens when someone steals your personal information. Keep your data secure.";
+        if (input.Contains("identity"))
+            return "Identity theft happens when someone steals your info.";
 
-        // Extra Features
-        if (input.Contains("hack") || input.Contains("hacker"))
-            return "Hackers try to gain unauthorized access to systems. Always keep your software updated and secure.";
+        if (input.Contains("hack"))
+            return "Hackers try to access systems. Keep software updated.";
 
-        if (input.Contains("update") || input.Contains("software"))
-            return "Always keep your apps and system updated to fix security vulnerabilities.";
+        if (input.Contains("update"))
+            return "Always update your apps to stay secure.";
 
-        if (input.Contains("link") || input.Contains("url"))
-            return "Always hover over links before clicking to check if they are legitimate.";
+        if (input.Contains("link"))
+            return "Check links before clicking.";
 
-        if (input.Contains("2fa") || input.Contains("two factor"))
-            return "Two-factor authentication adds an extra layer of security by requiring a second verification step.";
+        if (input.Contains("2fa"))
+            return "2FA adds extra security.";
 
-        return "I didn’t quite understand that. Try asking about cybersecurity topics like passwords or phishing.";
+        return "I didn’t quite understand that. Try asking about cybersecurity topics.";
     }
 }
