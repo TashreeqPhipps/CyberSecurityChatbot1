@@ -4,6 +4,7 @@
 This is a console-based chatbot built in C# that helps users learn about cybersecurity.
 
 ## Features
+- Voice greeting using WAV audio file
 - Answers questions about:
   - Password safety
   - Phishing
